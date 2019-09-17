@@ -1,0 +1,7 @@
+{
+    "app_port": ":7777",
+    "aws_region": "us-east-1b",
+    "database_endpoint": "database-cloudcomputing.ctzqt5akrysz.us-east-1.rds.amazonaws.com",
+    "database_name": "cloudcomputing",
+    "database_user": "admin"
+}

@@ -6,7 +6,7 @@
 *.dylib
 
 # dep vendor
-*.vendor
+*.vendor/
 
 # Test binary, build with `go test -c`
 *.test

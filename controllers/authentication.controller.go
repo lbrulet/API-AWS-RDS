@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"fmt"
 	"net/http"
 	"time"
 
@@ -25,9 +24,7 @@ func LoginController(c *gin.Context) {
 
 	// Check if the user exist
 	row := db.QueryRow(`SELECT * FROM User WHERE username = ?`, payload.Username)
-	err := row.Scan(&user.ID, &user.Username, &user.Password)
-	if err != nil {
-		fmt.Println(err)
+	if err := row.Scan(&user.ID, &user.Username, &user.Password); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"success": false, "message": "User does not exist"})
 		return
 	}
@@ -41,6 +38,10 @@ func LoginController(c *gin.Context) {
 	claims := models.Claims{ID: user.ID, StandardClaims: jwt.StandardClaims{ExpiresAt: expirationTime.Unix()}}
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
 	tokenString, err := token.SignedString([]byte("pingouin123"))
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"success": false, "message": err})
+		return
+	}
 
 	c.JSON(http.StatusOK, gin.H{"success": true, "message": user, "token": tokenString, "expiration_time": expirationTime})
 }

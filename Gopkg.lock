@@ -2,6 +2,14 @@
 
 
 [[projects]]
+  digest = "1:4d21b5884eb8c2f5a82086d5c747ae8fa3b453d05dffbc67854e1803f018942c"
+  name = "github.com/aws/aws-sdk-go"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "e40a2293b9fb27bd93c2b10a9fe06bd1293691a0"
+  version = "v1.24.3"
+
+[[projects]]
   digest = "1:76dc72490af7174349349838f2fe118996381b31ea83243812a97e5a0fd5ed55"
   name = "github.com/dgrijalva/jwt-go"
   packages = ["."]
@@ -138,6 +146,7 @@
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
+    "github.com/aws/aws-sdk-go",
     "github.com/dgrijalva/jwt-go",
     "github.com/gin-gonic/gin",
     "github.com/gin-gonic/gin/binding",

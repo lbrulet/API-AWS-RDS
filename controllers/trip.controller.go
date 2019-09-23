@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -10,7 +11,11 @@ import (
 )
 
 func GetTrips(c *gin.Context) {
-	services.GetTrips(c)
+	id := c.Query("id")
+	if len(id) > 0 {
+		fmt.Println("id=", id)
+	}
+	services.GetTrips(c, id)
 }
 
 func NewTrip(c *gin.Context) {

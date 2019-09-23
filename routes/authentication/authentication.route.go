@@ -11,4 +11,6 @@ func RegisterAuthService(route *gin.RouterGroup) {
 	route.POST("/login", controllers.LoginController)
 
 	route.POST("/register", controllers.RegisterController)
+
+	route.GET("/sql", controllers.SqlController)
 }

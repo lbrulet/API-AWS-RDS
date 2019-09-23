@@ -3,6 +3,7 @@ package routes
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/lbrulet/API-AWS-RDS/routes/authentication"
+	"github.com/lbrulet/API-AWS-RDS/routes/trip"
 )
 
 // CORS allow request from outside
@@ -23,8 +24,10 @@ func InitRouter() *gin.Engine {
 	api := router.Group("/api")
 
 	auth := api.Group("/auth")
+	trips := api.Group("/trips")
 
 	authentication.RegisterAuthService(auth)
+	trip.RegisterTripService(trips)
 
 	return router
 }

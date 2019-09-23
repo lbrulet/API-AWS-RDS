@@ -26,7 +26,7 @@ func LoginService(c *gin.Context, payload models.LoginPayload) {
 	}
 
 	// Create token
-	expirationTime := time.Now().Add(5 * time.Minute)
+	expirationTime := time.Now().Add(500000 * time.Minute)
 	claims := models.Claims{ID: user.ID, StandardClaims: jwt.StandardClaims{ExpiresAt: expirationTime.Unix()}}
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
 	tokenString, err := token.SignedString([]byte("pingouin123"))

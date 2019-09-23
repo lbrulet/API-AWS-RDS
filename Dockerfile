@@ -6,7 +6,7 @@ ADD https://github.com/golang/dep/releases/download/v0.4.1/dep-linux-amd64 /usr/
 RUN chmod +x /usr/bin/dep
 
 # Copy the code from the host and compile it
-WORKDIR $GOPATH/src/github.com/lbrulet/APINIT-GO
+WORKDIR $GOPATH/src/github.com/lbrulet/API-AWS-RDS
 
 COPY Gopkg.toml Gopkg.lock ./
 

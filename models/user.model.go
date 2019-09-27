@@ -5,3 +5,7 @@ type User struct {
 	Username string `json:"username"`
 	Password string `json:"-"`
 }
+
+type BindingUser struct {
+	ID string `uri:"id" binding:"required"`
+}

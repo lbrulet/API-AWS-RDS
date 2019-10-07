@@ -8,6 +8,7 @@ import (
 	"github.com/lbrulet/API-AWS-RDS/models"
 )
 
+// RemoveUser remove a user
 func RemoveUser(c *gin.Context, user models.BindingUser) {
 	db := database.DBManager.DB
 

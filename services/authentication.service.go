@@ -10,6 +10,7 @@ import (
 	"github.com/lbrulet/API-AWS-RDS/models"
 )
 
+// LoginService log the user and return token and user payload
 func LoginService(c *gin.Context, payload models.LoginPayload) {
 	db := database.DBManager.DB
 	var user models.User
@@ -38,6 +39,7 @@ func LoginService(c *gin.Context, payload models.LoginPayload) {
 	c.JSON(http.StatusOK, gin.H{"success": true, "message": user, "token": tokenString, "expiration_time": expirationTime.Unix()})
 }
 
+// RegisterService register a user
 func RegisterService(c *gin.Context, payload models.RegisterPayload) {
 	db := database.DBManager.DB
 	var count int

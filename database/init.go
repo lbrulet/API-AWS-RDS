@@ -5,13 +5,16 @@ import (
 	"errors"
 	"fmt"
 
+	// mysql driver
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/lbrulet/API-AWS-RDS/configs"
 	"github.com/lbrulet/API-AWS-RDS/models"
 )
 
+// DBManager variable that store the db instance
 var DBManager models.DatabaseManager
 
+// InitDB connect the api to mysql
 func InitDB() error {
 	var err error
 	if len(configs.Config.DatabasePassword) == 0 {

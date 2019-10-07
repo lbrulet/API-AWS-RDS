@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -10,14 +9,13 @@ import (
 	"github.com/lbrulet/API-AWS-RDS/services"
 )
 
+// GetTrips get all trips or trips by user id
 func GetTrips(c *gin.Context) {
 	id := c.Query("id")
-	if len(id) > 0 {
-		fmt.Println("id=", id)
-	}
 	services.GetTrips(c, id)
 }
 
+// NewTrip create a new trip
 func NewTrip(c *gin.Context) {
 	payload := models.Trip{}
 

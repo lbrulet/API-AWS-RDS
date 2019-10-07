@@ -8,6 +8,7 @@ import (
 	"github.com/lbrulet/API-AWS-RDS/services"
 )
 
+// RemoveUser remove a user
 func RemoveUser(c *gin.Context) {
 	var user models.BindingUser
 	if err := c.ShouldBindUri(&user); err != nil {

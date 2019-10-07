@@ -9,9 +9,10 @@ import (
 	"github.com/lbrulet/API-AWS-RDS/models"
 )
 
+// GetTrips get all trips or trip by user id
 func GetTrips(c *gin.Context, id string) {
 	db := database.DBManager.DB
-	var trips []models.Trip
+	var trips = make([]*models.Trip, 0)
 	var rows *sql.Rows
 	var err error
 	if len(id) > 0 {
@@ -28,10 +29,9 @@ func GetTrips(c *gin.Context, id string) {
 		var trip models.Trip
 		err = rows.Scan(&trip.ID, &trip.StartLat, &trip.StartLng, &trip.EndLat, &trip.EndLng, &trip.IDUser)
 		if err != nil {
-			// handle this error
-			panic(err)
+			c.JSON(http.StatusOK, gin.H{"success": false, "message": err})
 		}
-		trips = append(trips, trip)
+		trips = append(trips, &trip)
 	}
 	// get any error encountered during iteration
 	err = rows.Err()
@@ -42,6 +42,7 @@ func GetTrips(c *gin.Context, id string) {
 	c.JSON(http.StatusOK, gin.H{"success": true, "message": trips})
 }
 
+// NewTrip create a new trip
 func NewTrip(c *gin.Context, payload models.Trip) {
 	db := database.DBManager.DB
 

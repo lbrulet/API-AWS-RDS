@@ -7,6 +7,7 @@ import (
 	"github.com/lbrulet/gonfig"
 )
 
+// Config application configuration
 var Config models.Configuration
 
 func init() {
